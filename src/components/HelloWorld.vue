@@ -27,6 +27,9 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <h3 :class="{cdg: active}" :style="{color: color}">{{text}} CDG 테스트</h3>
+    <h4 v-if="active" @click="clickTest">보인당</h4>
+    <h4 v-for="item in list" :key="item.no">{{item.name}}</h4>
   </div>
 </template>
 
@@ -35,12 +38,35 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      active: true,
+      color: 'blue',
+      text: 'HELLO',
+      list: [
+        {no: 0, name: 'aa'},
+        {no: 1, name: 'a1'},
+        {no: 2, name: 'ab'}
+      ]
+    }
+  },
+  methods: {
+    clickTest() {
+      console.log('hello')
+    }
+  },
+  created() {
+    console.log('생성되쓰~~~')
+  },
+  mounted() {
+    console.log('HTML에 붙었으~~')
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 h3 {
   margin: 40px 0 0;
 }
