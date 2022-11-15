@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
     props: ['initCard'],
     data() {
@@ -37,7 +39,11 @@ export default {
     methods: {
         switchMode(mode) {
             this.mode = mode
-        }
+            if (mode == 'EDIT') {
+                this.modifyCard(this.card)
+            }
+        },
+        ...mapActions('album', ['modifyCard'])
     }
 }
 </script>

@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import Header from '@/components/album/Header.vue'
-import Main from '@/components/album/Main.vue'
-import Footer from '@/components/album/Footer.vue'
+import Header from '@/components/album/AlbumHeader.vue'
+import Main from '@/components/album/AlbumMain.vue'
+import Footer from '@/components/album/AlbumFooter.vue'
 
 export default {
     components: {

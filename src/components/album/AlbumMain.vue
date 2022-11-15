@@ -19,7 +19,7 @@
   
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-            <Card v-for="card in data" :key="card.id" :initCard="card" />
+            <card v-for="card in cards" :key="card.id" :initCard="card" />
 
         </div>
       </div>
@@ -29,14 +29,29 @@
 </template>
 
 <script>
-import Card from '@/components/album/Card.vue'
-import data from '@/data'
+import { mapState, mapActions } from 'vuex'
+import Card from '@/components/album/AlbumCard.vue'
+
 
 export default {
     data() {
         return {
-            data
+
         }
+    },
+    computed: {
+      ...mapState('album', {
+        cards: state => state.cards
+      })
+    },
+    created() { // 초기화
+      this.getCards();
+    },
+    methods: {
+      ...mapActions('album', ['getCards']), // vuex의 action 메서드와 매핑
+      log(contents) {
+        console.log(contents)
+      }
     },
     components: {
         Card
